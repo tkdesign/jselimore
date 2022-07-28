@@ -1,0 +1,46 @@
+{
+  "name": "jselimore",
+  "version": "1.0.0",
+  "description": "JavaScript library that make ellipsis text for multiple line of text with view or more button.",
+  "main": "src/index.js",
+  "dependencies": {
+    "prettier": "2",
+    "uglify-js": "3"
+  },
+  "devDependencies": {
+    "prettier": "2",
+    "uglify-js": "3"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "proseWrap": "always",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd assets/js && uglifyjs jselimore.js -c -m -o jselimore.min.js --source-map url=jselimore.min.js.map",
+    "dev": "cd assets/js && uglifyjs jselimore.js -b -o jselimore.dev.js --source-map url=jselimore.dev.js.map"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkdesign/jselimore.git"
+  },
+  "keywords": [
+    "ellipsis text",
+    "more button",
+    "javascript"
+  ],
+  "author": "Petr Kovalenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tkdesign/jselimore/issues"
+  },
+  "homepage": "https://github.com/tkdesign/jselimore#readme",
+  "files": [
+    "assets/js/*.js",
+    "assets/js/*.js.map",
+    "assets/css/*.css"
+  ]
+}
