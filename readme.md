@@ -1,7 +1,7 @@
 ﻿# JS Elimore
 #### Make Easy For Ellipsis Text
 
-JavaScript Elimore is a vanilla JS version of jQuery Elimore plugin that help you to make ellipsis text for multiple line of text with view or more button. You can trim how long the character will show.
+JavaScript Elimore is a JavaScript library that make ellipsis text for multiple line of text with view or more button. You can trim how long the character will show.
 
 ---
 
