@@ -13,7 +13,7 @@ JavaScript Elimore is a JavaScript library that make ellipsis text for multiple 
 ```
 jsElimore(selector).init();
 ```
-### Set the text size will show.
+### Set the text size will show
 ```
 jsElimore(selector, {maxLength:200}).init();
 ```
