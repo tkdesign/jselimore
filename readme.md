@@ -22,6 +22,6 @@ jsElimore(selector, {maxLength:200}).init();
 ## Options
 
 ```
-maxLength:130, // int (default value is 130)
-moreText : "More View", // string
+maxLength: 130, // int (default value is 130)
+moreText: "More View", // string
 ```
