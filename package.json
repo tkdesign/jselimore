@@ -28,9 +28,15 @@
     "url": "git+https://github.com/tkdesign/jselimore.git"
   },
   "keywords": [
-    "ellipsis text",
-    "more button",
-    "javascript"
+    "javascript",
+    "js",
+    "vanilla-javascript",
+    "vanilla-js",
+    "javascript-library",
+    "text-show-more-less",
+    "readme-button",
+    "text-show-and-hide-button",
+    "more-button"
   ],
   "author": "Petr Kovalenko",
   "license": "MIT",
