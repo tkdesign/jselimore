@@ -190,4 +190,4 @@ element.ellipsis({
 
 ## License
 
-This library is open-source and available under the [MIT License](readme.md). Feel free to use it in your projects.
+This library is open-source and available under the [MIT License](LICENSE.md). Feel free to use it in your projects.
