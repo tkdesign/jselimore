@@ -1,7 +1,7 @@
 {
   "name": "jselimore",
   "version": "1.1.0",
-  "description": "JavaScript Elimore library that make ellipsis text for multiple line of text with view or more button.",
+  "description": "JavaScript Elimore is a lightweight JavaScript library for text truncation with a 'Show More' button.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
