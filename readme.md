@@ -50,16 +50,20 @@ Here's an example of how you can use this library:
 2.  Initialize the library by specifying a selector for the element to which you want to apply the text truncation effect. For example:
 
 ```javascript
+// Simple initialization without customizing options
 const element = jsElimore('.your-element-selector');
+
 ```
 
-3.  You can also customize the library's parameters by passing an object with options to the `ellipsis` method. For example:
+3.  You can also customize the library's parameters during initialization by passing an options object. For example:
 
 ```javascript
-element.ellipsis({
+// Initialization with customized options
+const element = jsElimore('.your-element-selector', {
   maxLength: 100,      // New maximum text length
   moreText: "Show More",  // New text for the "Show More" button
 });
+
 ```
 
 As a result, the library will create a truncated version of the text with a "Show More" button (or the text you set) that the user can click to reveal the full text.
@@ -106,18 +110,18 @@ The JavaScript Elimore library can be integrated into your projects using variou
 import jsElimore from 'jselimore';
 ```
 
-3.  Initialize the JavaScript Elimore library by providing the selector of the element to which you want to apply the text truncation effect:
+3.  Initialize the JavaScript Elimore library by providing the selector of the element to which you want to apply the text truncation effect. No additional parameters are needed for the default settings:
 
 ```javascript
 const element = jsElimore('.your-element-selector');
 ```
 
-4.  Customize the parameters if necessary using the `ellipsis` method:
+4.  You can also customize the library's parameters during initialization by passing an options object. For example:
 
 ```javascript
-element.ellipsis({
-  maxLength: 100,        // New maximum text length
-  moreText: "Show More", // New text for the "Show More" button (defaults to "...")
+const element = jsElimore('.your-element-selector', {
+  maxLength: 100,        // Adjust the maximum text length
+  moreText: "Show More", // Customize the text for the "Show More" button (default is "...")
 });
 ```
 
@@ -129,7 +133,9 @@ If you want to use the `jsElimore` library in a Vue.js project, follow these ste
 
 1.  Install `jsElimore` in your project as a dependency (see "Installing Dependencies" section).
 
-2.  In your Vue component, import the library and initialize it for the desired element. For example, in your component's script:
+2.  In your Vue component, import the library and initialize it for the desired element. You can customize jsElimore parameters by passing an options object during initialization, but it's optional. If no options are provided, the default settings will be used. For example, in your component's script:
+
+**Initialization with default parameters:**
 
 ```javascript
 import jsElimore from 'jselimore';
@@ -138,19 +144,28 @@ export default {
   // ... other component settings
 
   mounted() {
-    // Initialize jsElimore for your element
+    // Initialize jsElimore for your element with default parameters
     const element = jsElimore('.your-element-selector');
   },
 };
 ```
 
-3.  Within your component, you can also customize `jsElimore` parameters using the `ellipsis` method:
+**Initialization with custom parameters:**
 
 ```javascript
-element.ellipsis({
-  maxLength: 100,   // New maximum text length
-  moreText: "Show", // New text for the "Show" button
-});
+import jsElimore from 'jselimore';
+
+export default {
+  // ... other component settings
+
+  mounted() {
+    // Initialize jsElimore for your element with custom parameters (optional)
+    const element = jsElimore('.your-element-selector', {
+      maxLength: 100,       // Adjust the maximum text length (optional)
+      moreText: "Show",    // Customize the text for the "Show" button (optional)
+    });
+  },
+};
 ```
 
 ### Integration with React project
@@ -159,15 +174,19 @@ If you want to use the `jsElimore` library in a React project, follow these step
 
 1.  Install `jsElimore` in your project as a dependency (see "Installing Dependencies" section).
 
-2.  In your React component, import the library and initialize it for the desired element. For example, in your functional component:
+2.  In your React component, import the library and initialize it for the desired element. You can customize jsElimore parameters by passing an options object during initialization, but it's optional. If no options are provided, the default settings will be used. For example, in your functional component:
+
+**Initialization with default parameters:**
 
 ```javascript
+import React, { useEffect } from 'react';
+import jsElimore from 'jselimore';
 import React, { useEffect } from 'react';
 import jsElimore from 'jselimore';
 
 const MyComponent = () => {
   useEffect(() => {
-    // Initialize jsElimore for your element
+    // Initialize jsElimore for your element with default parameters
     const element = jsElimore('.your-element-selector');
   }, []);
 
@@ -179,13 +198,27 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
-3.  Within your component, you can also customize `jsElimore` parameters using the `ellipsis` method:
+**Initialization with custom parameters:**
 
 ```javascript
-element.ellipsis({
-  maxLength: 100,        // New maximum text length
-  moreText: "Show", // New text for the "Show" button
-});
+import React, { useEffect } from 'react';
+import jsElimore from 'jselimore';
+
+const MyComponent = () => {
+  useEffect(() => {
+    // Initialize jsElimore for your element with custom parameters (optional)
+    const element = jsElimore('.your-element-selector', {
+      maxLength: 100,       // Adjust the maximum text length (optional)
+      moreText: "Show",    // Customize the text for the "Show" button (optional)
+    });
+  }, []);
+
+  return (
+    // Your component's JSX code
+  );
+};
+
+export default MyComponent;
 ```
 
 ## License

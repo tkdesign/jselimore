@@ -1,4 +1,11 @@
-const jsElimore = (selector, context = document) => {
+const jsElimore = (selector, newOptions = {}, context = document) => {
+
+  const defaultOptions = {
+    maxLength: 130,
+    moreText: "...",
+  };
+  const options = Object.assign({}, defaultOptions, newOptions);
+
   if (!document.querySelector('style#elimore-styles')) {
     const style = document.createElement('style');
     style.id = 'elimore-styles';
@@ -7,10 +14,6 @@ const jsElimore = (selector, context = document) => {
   }
 
   const el = context.querySelector(selector);
-  const options = {
-    maxLength: 130,
-    moreText: "...",
-  };
 
   const ellipsis = () => {
     const fullTxt = el.innerText;

@@ -1,5 +1,12 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var jsElimore = function jsElimore(selector) {
-  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+  var newOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : document;
+  var defaultOptions = {
+    maxLength: 130,
+    moreText: "..."
+  };
+  var options = _extends({}, defaultOptions, newOptions);
   if (!document.querySelector('style#elimore-styles')) {
     var style = document.createElement('style');
     style.id = 'elimore-styles';
@@ -7,10 +14,6 @@ var jsElimore = function jsElimore(selector) {
     document.head.appendChild(style);
   }
   var el = context.querySelector(selector);
-  var options = {
-    maxLength: 130,
-    moreText: "..."
-  };
   var ellipsis = function ellipsis() {
     var fullTxt = el.innerText;
     var fullHtml = el.innerHTML;

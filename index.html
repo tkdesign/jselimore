@@ -12,7 +12,10 @@
 
 <script src="./dist/jselimore.js"></script>
 <script>
-    const element = jsElimore('.your-element-selector');
+    const element = jsElimore('.your-element-selector', {
+        maxLength: 100,      // New maximum text length
+        moreText: "Show More",  // New text for the "Show More" button
+      });
 </script>
 </body>
 </html>
