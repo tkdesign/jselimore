@@ -10,12 +10,18 @@ var jsElimore = function jsElimore(selector) {
   if (!document.querySelector('style#elimore-styles')) {
     var style = document.createElement('style');
     style.id = 'elimore-styles';
-    style.innerText = " .elimore-hide { display: none; } .elimore_show { cursor: pointer; } ";
+    style.textContent = " .elimore-hide { display: none; } .elimore_show { cursor: pointer; } ";
     document.head.appendChild(style);
   }
   var el = context.querySelector(selector);
   var _ellipsis = function _ellipsis() {
-    var fullTxt = el.innerText;
+    if (!el) {
+      return;
+    }
+    var fullTxt = el.textContent;
+    if (fullTxt === undefined || !fullTxt.length) {
+      return;
+    }
     var fullHtml = el.innerHTML;
     var text_one = fullTxt.slice(0, options.maxLength);
     var more_btn = document.createElement('a');
@@ -26,6 +32,9 @@ var jsElimore = function jsElimore(selector) {
     el.appendChild(more_btn);
   };
   var rebuild = function rebuild() {
+    if (!el) {
+      return;
+    }
     var trimSpan = el.querySelector(".elimore_trim");
     if (trimSpan) {
       var trimSpanContent = trimSpan.innerHTML;
@@ -35,6 +44,9 @@ var jsElimore = function jsElimore(selector) {
     }
   };
   var _toggle_ellipsis = function _toggle_ellipsis() {
+    if (!el) {
+      return;
+    }
     el.querySelector(".elimore_preview").classList.toggle("elimore-hide");
     el.querySelector(".elimore_trim").classList.toggle("elimore-hide");
     el.querySelector(".elimore_show").classList.toggle("elimore-hide");
@@ -45,3 +57,6 @@ var jsElimore = function jsElimore(selector) {
     rebuild: rebuild
   };
 };
+if (typeof module !== 'undefined') {
+  module.exports = jsElimore;
+}

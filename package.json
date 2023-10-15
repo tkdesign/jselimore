@@ -4,7 +4,7 @@
   "description": "JavaScript Elimore is a lightweight JavaScript library for text truncation with a 'Show More' button.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx jest",
     "dist": "npx babel src --out-dir dist --copy-files && cd dist && uglifyjs jselimore.js -c -m -o jselimore.min.js --source-map url=jselimore.min.js.map"
   },
   "repository": {
@@ -35,6 +35,8 @@
     "@babel/preset-env": "^7.23.2",
     "babel-loader": "^9.1.3",
     "core-js": "^3.33.0",
+    "jest-puppeteer": "^9.0.1",
+    "jsdom": "^22.1.0",
     "source-map-loader": "^4.0.1"
   }
 }

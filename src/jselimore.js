@@ -9,14 +9,20 @@ const jsElimore = (selector, newOptions = {}, context = document) => {
   if (!document.querySelector('style#elimore-styles')) {
     const style = document.createElement('style');
     style.id = 'elimore-styles';
-    style.innerText = ` .elimore-hide { display: none; } .elimore_show { cursor: pointer; } `;
+    style.textContent = ` .elimore-hide { display: none; } .elimore_show { cursor: pointer; } `;
     document.head.appendChild(style);
   }
 
   const el = context.querySelector(selector);
 
   const _ellipsis = () => {
-    const fullTxt = el.innerText;
+    if (!el) {
+      return;
+    }
+    const fullTxt = el.textContent;
+    if (fullTxt === undefined || !fullTxt.length) {
+      return;
+    }
     const fullHtml = el.innerHTML;
     const text_one = fullTxt.slice(0, options.maxLength);
 
@@ -34,16 +40,22 @@ const jsElimore = (selector, newOptions = {}, context = document) => {
   };
 
   const rebuild = () => {
+    if (!el) {
+      return;
+    }
     const trimSpan = el.querySelector(".elimore_trim");
     if (trimSpan) {
       const trimSpanContent = trimSpan.innerHTML;
       el.innerHTML = "";
       el.innerHTML = trimSpanContent;
-      _ellipsis();  
+      _ellipsis();
     }
   };
 
   const _toggle_ellipsis = () => {
+    if(!el) {
+      return;
+    }
     el.querySelector(".elimore_preview").classList.toggle("elimore-hide");
     el.querySelector(".elimore_trim").classList.toggle("elimore-hide");
     el.querySelector(".elimore_show").classList.toggle("elimore-hide");
@@ -56,3 +68,7 @@ const jsElimore = (selector, newOptions = {}, context = document) => {
     rebuild
   };
 };
+
+if (typeof module !== 'undefined') {
+  module.exports = jsElimore;
+}
