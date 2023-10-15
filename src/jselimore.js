@@ -15,7 +15,7 @@ const jsElimore = (selector, newOptions = {}, context = document) => {
 
   const el = context.querySelector(selector);
 
-  const ellipsis = () => {
+  const _ellipsis = () => {
     const fullTxt = el.innerText;
     const fullHtml = el.innerHTML;
     const text_one = fullTxt.slice(0, options.maxLength);
@@ -33,17 +33,26 @@ const jsElimore = (selector, newOptions = {}, context = document) => {
     el.appendChild(more_btn);
   };
 
+  const rebuild = () => {
+    const trimSpan = el.querySelector(".elimore_trim");
+    if (trimSpan) {
+      const trimSpanContent = trimSpan.innerHTML;
+      el.innerHTML = "";
+      el.innerHTML = trimSpanContent;
+      _ellipsis();  
+    }
+  };
+
   const _toggle_ellipsis = () => {
     el.querySelector(".elimore_preview").classList.toggle("elimore-hide");
     el.querySelector(".elimore_trim").classList.toggle("elimore-hide");
     el.querySelector(".elimore_show").classList.toggle("elimore-hide");
   };
 
-  ellipsis();
+  _ellipsis();
 
   return {
     options,
-    ellipsis,
-    _toggle_ellipsis,
+    rebuild
   };
 };

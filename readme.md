@@ -80,6 +80,16 @@ After the library is executed, the text will be truncated, and a "Show More" but
 
 Make sure you have correctly included the library and specified the selector for your element. This way, the library will work on your web page.
 
+4. To recreate the truncated text with updated settings, use the rebuild method:
+
+```javascript
+// Example: Change the "moreText" option and rebuild
+element.options.moreText = 'Read more...';
+element.rebuild();
+```
+
+The rebuild method allows you to update the truncated text using the current settings.
+
 ## Usage with build systems and frontend frameworks
 
 ### Installing dependencies in your project
@@ -125,7 +135,17 @@ const element = jsElimore('.your-element-selector', {
 });
 ```
 
-5.  Build your project using a build system such as Webpack or Rollup.
+5. If you wish to update the settings and recreate the truncated text, adjust the jsElimore options:
+
+```javascript
+// Change the "moreText" option to 'Read more...' (for illustration)
+element.options.moreText = 'Read more...';
+
+// Use the `rebuild` method to recreate the truncated text with the updated settings
+element.rebuild();
+```
+
+6.  Build your project using a build system such as Webpack or Rollup.
 
 ### Integration with Vue.js project
 
@@ -137,35 +157,81 @@ If you want to use the `jsElimore` library in a Vue.js project, follow these ste
 
 **Initialization with default parameters:**
 
-```javascript
+```html
+<template>
+  <div>
+    <button @click="rebuildElement">Rebuild Element</button>
+  </div>
+</template>
+
+<script>
 import jsElimore from 'jselimore';
 
 export default {
-  // ... other component settings
-
   mounted() {
-    // Initialize jsElimore for your element with default parameters
-    const element = jsElimore('.your-element-selector');
+    this.initializeElement();
+  },
+  methods: {
+    initializeElement() {
+      // Initialize jsElimore for your element with default parameters
+      this.element = jsElimore('.your-element-selector');
+    },
+    // Create a function to change options
+    setOptions(newOptions) {
+      if (this.element) {
+        this.element.options = { ...this.element.options, ...newOptions };
+      }
+    },
+    // Create a function to rebuild the element
+    rebuildElement() {
+      if (this.element) {
+        this.element.rebuild();
+      }
+    },
   },
 };
+</script>
 ```
 
 **Initialization with custom parameters:**
 
-```javascript
+```html
+<template>
+  <div>
+    <button @click="rebuildElement">Rebuild Element</button>
+  </div>
+</template>
+
+<script>
 import jsElimore from 'jselimore';
 
 export default {
-  // ... other component settings
-
   mounted() {
-    // Initialize jsElimore for your element with custom parameters (optional)
-    const element = jsElimore('.your-element-selector', {
-      maxLength: 100,       // Adjust the maximum text length (optional)
-      moreText: "Show",    // Customize the text for the "Show" button (optional)
-    });
+    this.initializeElement();
+  },
+  methods: {
+    initializeElement() {
+      // Initialize jsElimore for your element with custom parameters (optional)
+      this.element = jsElimore('.your-element-selector', {
+        maxLength: 100,       // Adjust the maximum text length (optional)
+        moreText: "Show",    // Customize the text for the "Show" button (optional)
+      });
+    },
+    // Create a function to change options
+    setOptions(newOptions) {
+      if (this.element) {
+        this.element.options = { ...this.element.options, ...newOptions };
+      }
+    },
+    // Create a function to rebuild the element
+    rebuildElement() {
+      if (this.element) {
+        this.element.rebuild();
+      }
+    },
   },
 };
+</script>
 ```
 
 ### Integration with React project
@@ -181,19 +247,34 @@ If you want to use the `jsElimore` library in a React project, follow these step
 ```javascript
 import React, { useEffect } from 'react';
 import jsElimore from 'jselimore';
-import React, { useEffect } from 'react';
-import jsElimore from 'jselimore';
 
 const MyComponent = () => {
+  let element; // Define an element variable at the component level
+
   useEffect(() => {
     // Initialize jsElimore for your element with default parameters
-    const element = jsElimore('.your-element-selector');
+    element = jsElimore('.your-element-selector');
   }, []);
+
+  // Create a function to change options
+  const setOptions = (newOptions) => {
+    if (element) {
+      element.options = { ...element.options, ...newOptions };
+    }
+  };
+
+  // Create a function to rebuild the element
+  const rebuildElement = () => {
+    if (element) {
+      element.rebuild();
+    }
+  };
 
   return (
     // Your component's JSX code
+    <button onClick={rebuildElement}>Rebuild Element</button>
   );
-};
+}
 
 export default MyComponent;
 ```
@@ -205,20 +286,38 @@ import React, { useEffect } from 'react';
 import jsElimore from 'jselimore';
 
 const MyComponent = () => {
+  let element; // Define an element variable at the component level
+
   useEffect(() => {
     // Initialize jsElimore for your element with custom parameters (optional)
-    const element = jsElimore('.your-element-selector', {
+    element = jsElimore('.your-element-selector', {
       maxLength: 100,       // Adjust the maximum text length (optional)
       moreText: "Show",    // Customize the text for the "Show" button (optional)
     });
   }, []);
 
+  // Create a function to change options
+  const setOptions = (newOptions) => {
+    if (element) {
+      element.options = { ...element.options, ...newOptions };
+    }
+  };
+
+  // Create a function to rebuild the element
+  const rebuildElement = () => {
+    if (element) {
+      element.rebuild();
+    }
+  };
+
   return (
     // Your component's JSX code
+    <button onClick={rebuildElement}>Rebuild Element</button>
   );
-};
+}
 
 export default MyComponent;
+
 ```
 
 ## License

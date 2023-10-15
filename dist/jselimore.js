@@ -14,7 +14,7 @@ var jsElimore = function jsElimore(selector) {
     document.head.appendChild(style);
   }
   var el = context.querySelector(selector);
-  var ellipsis = function ellipsis() {
+  var _ellipsis = function _ellipsis() {
     var fullTxt = el.innerText;
     var fullHtml = el.innerHTML;
     var text_one = fullTxt.slice(0, options.maxLength);
@@ -25,15 +25,23 @@ var jsElimore = function jsElimore(selector) {
     el.innerHTML = "\n      <span class=\"elimore_preview\">".concat(text_one, "</span>\n      <span class=\"elimore_trim elimore-hide\">").concat(fullHtml, "</span>\n    ");
     el.appendChild(more_btn);
   };
+  var rebuild = function rebuild() {
+    var trimSpan = el.querySelector(".elimore_trim");
+    if (trimSpan) {
+      var trimSpanContent = trimSpan.innerHTML;
+      el.innerHTML = "";
+      el.innerHTML = trimSpanContent;
+      _ellipsis();
+    }
+  };
   var _toggle_ellipsis = function _toggle_ellipsis() {
     el.querySelector(".elimore_preview").classList.toggle("elimore-hide");
     el.querySelector(".elimore_trim").classList.toggle("elimore-hide");
     el.querySelector(".elimore_show").classList.toggle("elimore-hide");
   };
-  ellipsis();
+  _ellipsis();
   return {
     options: options,
-    ellipsis: ellipsis,
-    _toggle_ellipsis: _toggle_ellipsis
+    rebuild: rebuild
   };
 };
