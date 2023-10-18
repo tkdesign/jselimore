@@ -110,7 +110,7 @@ Your project will now use `jsElimore` from the specified GitHub repository as a 
 
 ### Usage with build systems
 
-The JavaScript Elimore library can be integrated into your projects using various build systems like Webpack, Rollup, which allow you to manage dependencies, optimize code, and ensure compatibility across different browsers.
+The JavaScript Elimore library can be integrated into your projects using various build systems like Webpack, Rollup, Vite, which allow you to manage dependencies, optimize code, and ensure compatibility across different browsers.
 
 1.  Install `jsElimore` in your project as a dependency (see "Installing Dependencies" section).
 
