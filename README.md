@@ -1,74 +1,67 @@
 ﻿# JavaScript Elimore
 
-JavaScript Elimore is a lightweight JavaScript library for text truncation with a Show More button. It allows you to truncate long blocks of text and provide users with the option to expand and read the full content. This library is suitable for web projects, including those built with Vue.js, React, or any vanilla JavaScript application.
+JavaScript Elimore is a lightweight library for truncating text with a "Read More" button. It supports seamless integration with Vanilla JS, React, and Vue. For React and Vue, simply copy the Elimore.jsx or Elimore.vue component from the `components` folder and add it to your project.
 
 ## Features
 
-- Truncate text to a specified maximum length.
-- Provide a customizable "Show More" button for user interaction.
-- Supports easy integration into Vue.js, React, and vanilla JavaScript projects.
-- Highly customizable with options to control text length and button text.
+- Truncate text to a specified maximum length
+- Customizable "Read More" button for user interaction
+- Easy integration with Vue.js, React, and vanilla JavaScript projects
+- Flexible options to control text length and button text
 
-## Usage as pure static JS code
+## Usage with Vanilla JS
 
-This section describes how to use the jsElimore library as pure static JS code, which can be easily embedded into an HTML page without the need for a build system or framework. This method provides a straightforward integration and allows you to use jsElimore directly in your HTML page's code.
+You can use jsElimore as a standalone JavaScript library, easily embedded into any HTML page without a build system or framework.
 
-### Option 1: Downloading the distributed library from github repository
+### Option 1: Download the distributed library from GitHub
 
-Download the distributable jsElimore library from the repository [https://github.com/tkdesign/jselimore](https://github.com/tkdesign/jselimore). You can find it in the `dist` folder.
+Download the jsElimore library from the [GitHub repository](https://github.com/tkdesign/jselimore), located in the `dist` folder.
 
--- or --
+### Option 2: Clone the project from GitHub
 
-### Option 2: Cloning the project from github repository
-
-1. Clone the entire jsElimore project repository [https://github.com/tkdesign/jselimore](https://github.com/tkdesign/jselimore) to your local environment.
-
-2. In your project directory, install the required dependencies by running:
+1. Clone the jsElimore repository: [https://github.com/tkdesign/jselimore](https://github.com/tkdesign/jselimore)
+2. In your project directory, install dependencies:
 
 ```bash
-npm install --save-dev
+npm i
 ```
 
-3. Once the dependencies are installed, generate the distributable version of the library using:
+3. Build the distributable version:
 
 ```bash
 npm run dist
 ```
 
-This will process the source code from the `src` directory and produce a distribution that can be used in various environments.
+This will process the source code from the `src` directory and create a distribution suitable for various environments.
 
-### To use this library, you can call the `jsElimore` function and provide a selector and context (default is `document`)
+### How to use jsElimore
 
-Here's an example of how you can use this library:
-
-1.  Include the library in your project:
+1. Include the library in your HTML:
 
 ```html
 <script src="jselimore.js"></script>
 ```
 
-2.  Initialize the library by specifying a selector for the element to which you want to apply the text truncation effect. For example:
+2. Initialize the library by specifying a selector for the element you want to truncate:
 
 ```javascript
-// Simple initialization without customizing options
+// Basic initialization
 const element = jsElimore('.your-element-selector');
-
 ```
 
-3.  You can also customize the library's parameters during initialization by passing an options object. For example:
+3. You can also customize the options:
 
 ```javascript
-// Initialization with customized options
+// Initialization with custom options
 const element = jsElimore('.your-element-selector', {
-  maxLength: 100,      // New maximum text length
-  moreText: "Show More",  // New text for the "Show More" button
+    maxLength: 100, // Maximum preview length
+    moreText: "... read more", // Custom text for the button
 });
-
 ```
 
-As a result, the library will create a truncated version of the text with a "Show More" button (or the text you set) that the user can click to reveal the full text.
+The library will truncate the text and add a "Read More" button (or your custom text). Clicking the button reveals the full text.
 
-Example HTML markup:
+Example HTML:
 
 ```html
 <div class="your-element-selector">
@@ -76,277 +69,98 @@ Example HTML markup:
 </div>
 ```
 
-After the library is executed, the text will be truncated, and a "Show More" button will be added. When the button is clicked, the text will expand.
+After initialization, the text will be truncated and a "Read More" button will appear. Clicking the button expands the text.
 
-Make sure you have correctly included the library and specified the selector for your element. This way, the library will work on your web page.
+Ensure you have included the library and specified the correct selector for your element.
 
-4. To recreate the truncated text with updated settings, use the rebuild method:
+4. To update the truncated text dynamically (for example, after changing options or content), use the `rebuild` method:
 
 ```javascript
-// Example: Change the "moreText" option and rebuild
-element.options.moreText = 'Read more...';
+// Update the "moreText" option and rebuild
+element.options.moreText = '... read more';
 element.rebuild();
 ```
 
-The rebuild method allows you to update the truncated text using the current settings.
+## Integration with Vue.js (using Elimore.vue component)
 
-## Usage with build systems and frontend frameworks
-
-### Installing dependencies in your project
-
-1.  Open your project's `package.json` file (the project in which you want to use `jsElimore`).
-
-2.  Add a dependency for `jsElimore` by specifying the GitHub repository path in the format `githubusername/repositoryname#branchname`:
-
-```json
-"dependencies": {
-  "jselimore": "git+https://github.com/tkdesign/jselimore.git"
-}
-```
-
-3.  Run the `npm install` or `yarn install` command to install the `jsElimore` dependency from the GitHub repository in your project.
-
-Your project will now use `jsElimore` from the specified GitHub repository as a dependency. You can import and use it in your code.
-
-### Usage with build systems
-
-The JavaScript Elimore library can be integrated into your projects using various build systems like Webpack, Rollup, Vite, which allow you to manage dependencies, optimize code, and ensure compatibility across different browsers.
-
-1.  Install `jsElimore` in your project as a dependency (see "Installing Dependencies" section).
-
-2.  In your JavaScript code, import the library using the following instruction:
-
-```javascript
-import jsElimore from 'jselimore';
-```
-
-3.  Initialize the JavaScript Elimore library by providing the selector of the element to which you want to apply the text truncation effect. No additional parameters are needed for the default settings:
-
-```javascript
-const element = jsElimore('.your-element-selector');
-```
-
-4.  You can also customize the library's parameters during initialization by passing an options object. For example:
-
-```javascript
-const element = jsElimore('.your-element-selector', {
-  maxLength: 100,        // Adjust the maximum text length
-  moreText: "Show More", // Customize the text for the "Show More" button (default is "...")
-});
-```
-
-5. If you wish to update the settings and recreate the truncated text, adjust the jsElimore options:
-
-```javascript
-// Change the "moreText" option to 'Read more...' (for illustration)
-element.options.moreText = 'Read more...';
-
-// Use the `rebuild` method to recreate the truncated text with the updated settings
-element.rebuild();
-```
-
-6.  Build your project using a build system such as Webpack or Rollup.
-
-### Integration with Vue.js project
-
-If you want to use the `jsElimore` library in a Vue.js project, follow these steps:
-
-1.  Install `jsElimore` in your project as a dependency (see "Installing Dependencies" section).
-
-2.  In your Vue component, import the library and initialize it for the desired element. You can customize jsElimore parameters by passing an options object during initialization, but it's optional. If no options are provided, the default settings will be used. For example, in your component's script:
-
-**Initialization with default parameters:**
+To use Elimore in a Vue.js project, copy the `Elimore.vue` component from the `components` folder into your project and import it:
 
 ```html
 <template>
-    <div>
-        <div class="your-element-selector">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus repellendus,
-            quam culpa necessitatibus officia fugit modi qui sed quos. Cupiditate ex pariatur iure. Quam atque rerum dolorum
-            necessitatibus sint ad.</div>
-        <button @click="rebuildElement">Reset</button>
-    </div>
+  <div className="custom_wrapper">
+    <Elimore
+      :key="resetKey"
+      text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima nostrum unde voluptas sunt sequi reprehenderit architecto at provident rem. Totam voluptatum illo vitae quasi tenetur possimus, cupiditate sint animi architecto."
+      :maxLength="100"
+      moreText="... read more"
+    />
+    <button @click="resetKey++">Reset</button>
+  </div>
 </template>
 
 <script>
-    import jsElimore from 'jselimore';
+import Elimore from "./Elimore.vue";
 
-    export default {
-        mounted() {
-            this.initializeElement();
-        },
-        methods: {
-            initializeElement() {
-                // Initialize jsElimore for your element with default parameters
-                this.element = jsElimore('.your-element-selector');
-            },
-            // Create a function to change options
-            setOptions(newOptions) {
-                if (this.element) {
-                    this.element.options = { ...this.element.options, ...newOptions };
-                }
-            },
-            // Create a function to rebuild the element
-            rebuildElement() {
-                if (this.element) {
-                    this.element.rebuild();
-                }
-            },
-        },
+export default {
+  components: { Elimore },
+  data () {
+    return {
+      element: null,
+      resetKey: 0
     };
-</script>
-
-<style scoped>
-    .your-element-selector {
-        padding: 20px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        width: 300px;
-    }
-</style>
-```
-
-**Initialization with custom parameters:**
-
-```html
-<template>
-    <div>
-        <div class="your-element-selector">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus repellendus,
-            quam culpa necessitatibus officia fugit modi qui sed quos. Cupiditate ex pariatur iure. Quam atque rerum dolorum
-            necessitatibus sint ad.</div>
-        <button @click="rebuildElement">Reset</button>
-    </div>
-</template>
-
-<script>
-    import jsElimore from 'jselimore';
-
-    export default {
-        mounted() {
-            this.initializeElement();
-        },
-        methods: {
-            initializeElement() {
-                // Initialize jsElimore for your element with default parameters
-                this.element = jsElimore('.your-element-selector', {
-                    maxLength: 100,       // Adjust the maximum text length (optional)
-                    moreText: "... Read more.",    // Customize the text for the more button (optional)
-                });
-            },
-            // Create a function to change options
-            setOptions(newOptions) {
-                if (this.element) {
-                    this.element.options = { ...this.element.options, ...newOptions };
-                }
-            },
-            // Create a function to rebuild the element
-            rebuildElement() {
-                if (this.element) {
-                    this.element.rebuild();
-                }
-            },
-        },
-    };
+  },
+};
 </script>
 
 <style>
-    .your-element-selector {
-        padding: 20px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        width: 300px;
-    }
-    .elimore_show {
-        font-weight: bold;
-    }
+.custom_wrapper {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  width: 300px;
+}
+.elimore_show {
+  font-weight: bold;
+}
 </style>
 ```
 
-### Integration with React project
+## Integration with React (using Elimore.jsx component)
 
-If you want to use the `jsElimore` library in a React project, follow these steps:
-
-1.  Install `jsElimore` in your project as a dependency (see "Installing Dependencies" section).
-
-2.  In your React component, import the library and initialize it for the desired element. You can customize jsElimore parameters by passing an options object during initialization, but it's optional. If no options are provided, the default settings will be used. For example, in your functional component:
-
-**Initialization with default parameters:**
+To use Elimore in a React project, copy the `Elimore.jsx` component from the `components` folder into your project and import it:
 
 ```javascript
-import React, { useEffect } from 'react';
-import jsElimore from 'jselimore';
+import { useState } from "react";
+import Elimore from "./Elimore";
 
-const MyComponent = () => {
-  let element; // Define an element variable at the component level
-
-  useEffect(() => {
-    // Initialize jsElimore for your element with default parameters
-    element = jsElimore('.your-element-selector');
-  }, []);
-
-  // Create a function to change options
-  const setOptions = (newOptions) => {
-    if (element) {
-      element.options = { ...element.options, ...newOptions };
-    }
-  };
-
-  // Create a function to rebuild the element
-  const rebuildElement = () => {
-    if (element) {
-      element.rebuild();
-    }
-  };
+function App() {
+  const [resetCounter, setResetCounter] = useState(0);
 
   return (
-    // Your component's JSX code
-    <button onClick={rebuildElement}>Rebuild Element</button>
+    <>
+      <style>{`
+        .elimore_show {
+          font-weight: bold;
+        }
+      `}</style>
+      <div style={{ width: "300px", padding: "10px", border: "1px solid #ccc" }}>
+        <Elimore
+          key={resetCounter}
+          text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima nostrum unde voluptas sunt sequi reprehenderit architecto at provident rem. Totam voluptatum illo vitae quasi tenetur possimus, cupiditate sint animi architecto."
+          maxLength={100}
+          moreText="... read more"
+        />
+        <button onClick={() => setResetCounter(c => c + 1)}>Reset</button>
+      </div>
+    </>
   );
 }
 
-export default MyComponent;
+export default App
 ```
 
-**Initialization with custom parameters:**
-
-```javascript
-import React, { useEffect } from 'react';
-import jsElimore from 'jselimore';
-
-const MyComponent = () => {
-  let element; // Define an element variable at the component level
-
-  useEffect(() => {
-    // Initialize jsElimore for your element with custom parameters (optional)
-    element = jsElimore('.your-element-selector', {
-      maxLength: 100,       // Adjust the maximum text length (optional)
-      moreText: "Show",    // Customize the text for the "Show" button (optional)
-    });
-  }, []);
-
-  // Create a function to change options
-  const setOptions = (newOptions) => {
-    if (element) {
-      element.options = { ...element.options, ...newOptions };
-    }
-  };
-
-  // Create a function to rebuild the element
-  const rebuildElement = () => {
-    if (element) {
-      element.rebuild();
-    }
-  };
-
-  return (
-    // Your component's JSX code
-    <button onClick={rebuildElement}>Rebuild Element</button>
-  );
-}
-
-export default MyComponent;
-
-```
+## Copyright
+Author of the application: Petr Kovalenko, 2023
 
 ## License
-
-This library is open-source and available under the [MIT License](LICENSE.md). Feel free to use it in your projects.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

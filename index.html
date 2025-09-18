@@ -5,20 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jsElimore Example</title>
+    <style>
+        .custom_wrapper {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            width: 300px;
+        }
+
+        .elimore_show {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
+<div class="custom_wrapper">
     <div class="your-element-selector">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa delectus deleniti error esse eum in incidunt
         quis! Adipisci aliquid deleniti dolor ea fuga minus numquam reiciendis reprehenderit sint vitae. Natus.
     </div>
-    <script src="dist/jselimore.min.js"></script>
-    <script>
-        const element = jsElimore('.your-element-selector', {
-            maxLength: 100,      // New maximum text length
-            moreText: "Show More",  // New text for the "Show More" button
-        });
-    </script>
+    <button onclick="rebuild()">Reset</button>
+</div>
+<script src="dist/jselimore.min.js"></script>
+<script>
+    const element = jsElimore('.your-element-selector', {
+        maxLength: 100, // Custom maximum text preview length
+        moreText: "... read more", // Custom `more` text
+    });
+
+    function rebuild() {
+        if (!element) return;
+        element.rebuild();
+    }
+</script>
 </body>
 
 </html>
