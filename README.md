@@ -159,79 +159,106 @@ If you want to use the `jsElimore` library in a Vue.js project, follow these ste
 
 ```html
 <template>
-  <div>
-    <button @click="rebuildElement">Rebuild Element</button>
-  </div>
+    <div>
+        <div class="your-element-selector">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus repellendus,
+            quam culpa necessitatibus officia fugit modi qui sed quos. Cupiditate ex pariatur iure. Quam atque rerum dolorum
+            necessitatibus sint ad.</div>
+        <button @click="rebuildElement">Reset</button>
+    </div>
 </template>
 
 <script>
-import jsElimore from 'jselimore';
+    import jsElimore from 'jselimore';
 
-export default {
-  mounted() {
-    this.initializeElement();
-  },
-  methods: {
-    initializeElement() {
-      // Initialize jsElimore for your element with default parameters
-      this.element = jsElimore('.your-element-selector');
-    },
-    // Create a function to change options
-    setOptions(newOptions) {
-      if (this.element) {
-        this.element.options = { ...this.element.options, ...newOptions };
-      }
-    },
-    // Create a function to rebuild the element
-    rebuildElement() {
-      if (this.element) {
-        this.element.rebuild();
-      }
-    },
-  },
-};
+    export default {
+        mounted() {
+            this.initializeElement();
+        },
+        methods: {
+            initializeElement() {
+                // Initialize jsElimore for your element with default parameters
+                this.element = jsElimore('.your-element-selector');
+            },
+            // Create a function to change options
+            setOptions(newOptions) {
+                if (this.element) {
+                    this.element.options = { ...this.element.options, ...newOptions };
+                }
+            },
+            // Create a function to rebuild the element
+            rebuildElement() {
+                if (this.element) {
+                    this.element.rebuild();
+                }
+            },
+        },
+    };
 </script>
+
+<style scoped>
+    .your-element-selector {
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        width: 300px;
+    }
+</style>
 ```
 
 **Initialization with custom parameters:**
 
 ```html
 <template>
-  <div>
-    <button @click="rebuildElement">Rebuild Element</button>
-  </div>
+    <div>
+        <div class="your-element-selector">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus repellendus,
+            quam culpa necessitatibus officia fugit modi qui sed quos. Cupiditate ex pariatur iure. Quam atque rerum dolorum
+            necessitatibus sint ad.</div>
+        <button @click="rebuildElement">Reset</button>
+    </div>
 </template>
 
 <script>
-import jsElimore from 'jselimore';
+    import jsElimore from 'jselimore';
 
-export default {
-  mounted() {
-    this.initializeElement();
-  },
-  methods: {
-    initializeElement() {
-      // Initialize jsElimore for your element with custom parameters (optional)
-      this.element = jsElimore('.your-element-selector', {
-        maxLength: 100,       // Adjust the maximum text length (optional)
-        moreText: "Show",    // Customize the text for the "Show" button (optional)
-      });
-    },
-    // Create a function to change options
-    setOptions(newOptions) {
-      if (this.element) {
-        this.element.options = { ...this.element.options, ...newOptions };
-      }
-    },
-    // Create a function to rebuild the element
-    rebuildElement() {
-      if (this.element) {
-        this.element.rebuild();
-      }
-    },
-  },
-};
+    export default {
+        mounted() {
+            this.initializeElement();
+        },
+        methods: {
+            initializeElement() {
+                // Initialize jsElimore for your element with default parameters
+                this.element = jsElimore('.your-element-selector', {
+                    maxLength: 100,       // Adjust the maximum text length (optional)
+                    moreText: "... Read more.",    // Customize the text for the more button (optional)
+                });
+            },
+            // Create a function to change options
+            setOptions(newOptions) {
+                if (this.element) {
+                    this.element.options = { ...this.element.options, ...newOptions };
+                }
+            },
+            // Create a function to rebuild the element
+            rebuildElement() {
+                if (this.element) {
+                    this.element.rebuild();
+                }
+            },
+        },
+    };
 </script>
+
+<style>
+    .your-element-selector {
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        width: 300px;
+    }
+    .elimore_show {
+        font-weight: bold;
+    }
+</style>
 ```
 
 ### Integration with React project

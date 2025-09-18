@@ -13,7 +13,10 @@ var jsElimore = function jsElimore(selector) {
     style.textContent = " .elimore-hide { display: none; } .elimore_show { cursor: pointer; } ";
     document.head.appendChild(style);
   }
-  var el = context.querySelector(selector);
+  var el = selector;
+  if (typeof selector === "string") {
+    el = context.querySelector(selector);
+  }
   var _ellipsis = function _ellipsis() {
     if (!el) {
       return;
