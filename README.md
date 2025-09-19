@@ -1,19 +1,19 @@
 ﻿# JavaScript Elimore
 
-JavaScript Elimore is a lightweight library for truncating text with a "Read More" button. It supports seamless integration with Vanilla JS, React, and Vue. For React and Vue, simply copy the Elimore.jsx or Elimore.vue component from the `components` folder and add it to your project.
+JavaScript Elimore is a lightweight library for truncating text and displaying a "Read More" button. You can use it in plain JavaScript projects by simply including the compiled JS file in your HTML, without any frameworks or build tools. For React and Vue, dedicated components (Elimore.jsx and Elimore.vue) are provided in the `components` folder for easy integration into your applications.
 
 ## Features
 
 - Truncate text to a specified maximum length
 - Customizable "Read More" button for user interaction
-- Easy integration with Vue.js, React, and vanilla JavaScript projects
+- Works with plain JavaScript, React, and Vue.js
 - Flexible options to control text length and button text
 
-## Usage with Vanilla JS
+## Usage with Plain JavaScript
 
 You can use jsElimore as a standalone JavaScript library, easily embedded into any HTML page without a build system or framework.
 
-### Option 1: Download the distributed library from GitHub
+### Option 1: Download the library from GitHub
 
 Download the jsElimore library from the [GitHub repository](https://github.com/tkdesign/jselimore), located in the `dist` folder.
 
@@ -32,7 +32,7 @@ npm i
 npm run dist
 ```
 
-This will process the source code from the `src` directory and create a distribution suitable for various environments.
+This will process the source code from the `src` directory and create a compiled JS file suitable for direct use in HTML pages.
 
 ### How to use jsElimore
 
@@ -81,7 +81,7 @@ element.options.moreText = '... read more';
 element.rebuild();
 ```
 
-## Integration with Vue.js (using Elimore.vue component)
+## Usage in Vue.js Applications (Elimore.vue)
 
 To use Elimore in a Vue.js project, copy the `Elimore.vue` component from the `components` folder into your project and import it:
 
@@ -125,7 +125,7 @@ export default {
 </style>
 ```
 
-## Integration with React (using Elimore.jsx component)
+## Usage in React Applications (Elimore.jsx)
 
 To use Elimore in a React project, copy the `Elimore.jsx` component from the `components` folder into your project and import it:
 
@@ -156,11 +156,11 @@ function App() {
   );
 }
 
-export default App
+export default App;
 ```
 
 ## Copyright
-Author of the application: Petr Kovalenko, 2023
+Author: Petr Kovalenko, 2023
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
