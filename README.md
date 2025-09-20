@@ -1,15 +1,15 @@
 ﻿# JavaScript Elimore
 
-JavaScript Elimore is a lightweight library for truncating text and displaying a "Read More" button. You can use it in plain JavaScript projects by simply including the compiled JS file in your HTML, without any frameworks or build tools. For React and Vue, dedicated components (Elimore.jsx and Elimore.vue) are provided in the `components` folder for easy integration into your applications.
+JavaScript Elimore is a lightweight library for truncating text and displaying a "Read More" button. You can use it in pure JavaScript projects by simply including the compiled JS file in your HTML, without any frameworks or build tools. For React and Vue, dedicated components (Elimore.jsx and Elimore.vue) are provided in the `components` folder for easy integration into your applications.
 
 ## Features
 
 - Truncate text to a specified maximum length
 - Customizable "Read More" button for user interaction
-- Works with plain JavaScript, React, and Vue.js
+- Works with pure JavaScript, React, and Vue 3
 - Flexible options to control text length and button text
 
-## Usage with Plain JavaScript
+## Usage with Pure JavaScript
 
 You can use jsElimore as a standalone JavaScript library, easily embedded into any HTML page without a build system or framework.
 
@@ -81,13 +81,15 @@ element.options.moreText = '... read more';
 element.rebuild();
 ```
 
-## Usage in Vue.js Applications (Elimore.vue)
+## Usage in Vue 3 Applications (Elimore.vue)
 
-To use Elimore in a Vue.js project, copy the `Elimore.vue` component from the `components` folder into your project and import it:
+To use Elimore in a Vue 3 project, copy the `Elimore.vue` component from the `components` folder into your project and import it.
+
+### Option 1: Options API
 
 ```html
 <template>
-  <div className="custom_wrapper">
+  <div class="custom_wrapper">
     <Elimore
       :key="resetKey"
       text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima nostrum unde voluptas sunt sequi reprehenderit architecto at provident rem. Totam voluptatum illo vitae quasi tenetur possimus, cupiditate sint animi architecto."
@@ -111,6 +113,38 @@ export default {
   },
 };
 </script>
+
+<style>
+.custom_wrapper {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  width: 300px;
+}
+.elimore_show {
+  font-weight: bold;
+}
+</style>
+```
+
+### Option 2: Composition API
+
+```html
+<script setup>
+import { ref } from "vue";
+import Elimore from "./Elimore.vue";
+
+const resetKey = ref(0);
+</script>
+
+<template>
+  <div class="custom_wrapper">
+    <Elimore :key="resetKey"
+      text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima nostrum unde voluptas sunt sequi reprehenderit architecto at provident rem. Totam voluptatum illo vitae quasi tenetur possimus, cupiditate sint animi architecto."
+      :maxLength="100" moreText="... read more" />
+    <button @click="resetKey++">Reset</button>
+  </div>
+</template>
 
 <style>
 .custom_wrapper {
@@ -160,7 +194,7 @@ export default App;
 ```
 
 ## Copyright
-Author: Petr Kovalenko, 2023
+Author: Petr Kovalenko, 2023.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
