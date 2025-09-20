@@ -1,12 +1,12 @@
 ﻿# JavaScript Elimore
 
-JavaScript Elimore is a lightweight library for truncating text and displaying a "Read More" button. You can use it in pure JavaScript projects by simply including the compiled JS file in your HTML, without any frameworks or build tools. For React and Vue, dedicated components (Elimore.jsx and Elimore.vue) are provided in the `components` folder for easy integration into your applications.
+JavaScript Elimore is a lightweight library for truncating text and displaying a "Read More" button. You can use it in JavaScript projects by simply including the compiled JS file in your HTML, without any frameworks or build tools. For React and Vue, dedicated components (Elimore.jsx and Elimore.vue) are provided in the `components` folder for easy integration into your applications.
 
 ## Features
 
 - Truncate text to a specified maximum length
 - Customizable "Read More" button for user interaction
-- Works with pure JavaScript, React, and Vue 3
+- Works with pure JavaScript, React, and Vue 3 frameworks
 - Flexible options to control text length and button text
 
 ## Usage with Pure JavaScript
